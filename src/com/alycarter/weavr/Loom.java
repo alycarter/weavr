@@ -84,6 +84,36 @@ public class Loom {
 		lifts.add(new JCheckBox[shafts]);
 	}
 	
+	public void shiftLiftPattern()
+	{
+		for(int x = getLiftPatternCount()-1; x > 0; x--)
+		{
+			for(int y = 0; y < shafts; y++)
+			{	
+				lifts.get(x)[y].setSelected(lifts.get(x-1)[y].isSelected());
+			}
+		}
+		for(int y = 0; y < shafts; y++)
+		{				
+			lifts.get(0)[y].setSelected(false);	
+		}
+	}
+	
+	public void shiftThreadPattern()
+	{
+		for(int x = getThreadPatternCount()-1; x > 0; x--)
+		{
+			for(int y = 0; y < shafts; y++)
+			{				
+				threads.get(x)[y].setSelected(threads.get(x-1)[y].isSelected());	
+			}
+		}
+		for(int y = 0; y < shafts; y++)
+		{				
+			threads.get(0)[y].setSelected(false);	
+		}
+	}
+	
 	public int getThreadPatternCount()
 	{
 		return threads.size();
